@@ -1,0 +1,35 @@
+# .gitignore
+# Build Folders
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code settings
+.vscode/
+
+# Log files
+*.log
+
+# NuGet packages
+*.nupkg
+# Ignore build output directories
+bin/
+obj/
+
+# Ignore the .gitignore.txt file (if this is unintended)
+.gitignore.txt
+
+# You might want to ignore certain files in Pages/, TestData/, Tests/, Utils/ if they contain generated or temporary files.
+# For example:
+# Pages/*.tmp
+# TestData/*.log
+# Tests/*.bak
+# Utils/temp/
+
+# If you have specific file types you want to ignore in these directories, you can specify them here.
+
