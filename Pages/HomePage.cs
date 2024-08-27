@@ -9,10 +9,12 @@ namespace SeleniumC_WebTesting.Pages
         private readonly IWebDriver driver;
         private readonly WebDriverWait wait;
 
+        // Constructor to initialize WebDriver and WebDriverWait
         public HomePage(IWebDriver driver)
         {
             this.driver = driver;
-            this.wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            // Initialize the WebDriverWait with a timeout of 10 seconds
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         }
 
         private IWebElement HealthImage => wait.Until(d => d.FindElement(By.XPath("//img[@alt='Health']")));

@@ -21,7 +21,7 @@ namespace SeleniumC_WebTesting.Tests
             homePage = new HomePage(driver);
             aboutYourSelfPage = homePage.ClickHealthImage();
             aboutYourSelfPage.EnterAllFieldsAndClickGetStarted("dheerendra", "9865986598", "dherendra@gmail.com");
-            familyMemberInsurancePage = aboutYourSelfPage.ClickGetStarted(); 
+            familyMemberInsurancePage = aboutYourSelfPage.ClickGetStarted();
             Thread.Sleep(5000);
             cityPage = familyMemberInsurancePage.CheckSelfCheckbox("39").ClickContinue();
         }

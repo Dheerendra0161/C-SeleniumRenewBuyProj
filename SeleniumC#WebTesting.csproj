@@ -1,37 +1,79 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>SeleniumC_WebTesting</RootNamespace>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+	<!-- PropertyGroup: Contains project settings and configurations -->
+	<PropertyGroup>
+		<!-- Target framework for the project -->
+		<TargetFramework>net8.0</TargetFramework>
 
-    <IsPackable>false</IsPackable>
-    <IsTestProject>true</IsTestProject>
-  </PropertyGroup>
+		<!-- Root namespace for the project -->
+		<RootNamespace>SeleniumC_WebTesting</RootNamespace>
 
-  <ItemGroup>
-    <PackageReference Include="coverlet.collector" Version="6.0.0" />
-    <PackageReference Include="CsvHelper" Version="33.0.1" />
-    <PackageReference Include="EPPlus" Version="7.2.2" />
-    <PackageReference Include="ExcelDataReader" Version="3.7.0" />
-    <PackageReference Include="ExcelDataReader.DataSet" Version="3.7.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
-    <PackageReference Include="NPOI" Version="2.7.1" />
-    <PackageReference Include="NUnit" Version="4.1.0" />
-    <PackageReference Include="NUnit.Analyzers" Version="3.9.0" />
-    <PackageReference Include="NUnit3TestAdapter" Version="4.6.0" />
-    <PackageReference Include="Selenium.Support" Version="4.23.0" />
-    <PackageReference Include="Selenium.WebDriver" Version="4.23.0" />
-    <PackageReference Include="SeleniumExtras.WaitHelpers" Version="1.0.2" />
-  </ItemGroup>
+		<!-- Enable implicit usings for commonly used namespaces -->
+		<ImplicitUsings>enable</ImplicitUsings>
 
-  <ItemGroup>
-    <Using Include="NUnit.Framework" />
-  </ItemGroup>
+		<!-- Enable nullable reference types -->
+		<Nullable>enable</Nullable>
 
-  <ItemGroup>
-    <Folder Include="Base\" />
-  </ItemGroup>
+		<!-- Indicates the project is not intended to be packed into a NuGet package -->
+		<IsPackable>false</IsPackable>
+
+		<!-- Indicates the project is a test project -->
+		<IsTestProject>true</IsTestProject>
+	</PropertyGroup>
+
+	<!-- ItemGroup: Packages related to test framework and test adapter -->
+	<ItemGroup>
+		<!-- NUnit test framework and tools -->
+		<PackageReference Include="NUnit" Version="4.1.0" />
+		<PackageReference Include="NUnit.Analyzers" Version="3.9.0" />
+		<PackageReference Include="NUnit3TestAdapter" Version="4.6.0" />
+
+		<!-- .NET test SDK for running tests -->
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+
+		<!-- Code coverage tool -->
+		<PackageReference Include="coverlet.collector" Version="6.0.0" />
+	</ItemGroup>
+
+	<!-- ItemGroup: Packages related to Selenium WebDriver and browser drivers -->
+	<ItemGroup>
+		<!-- Selenium WebDriver core and support packages -->
+		<PackageReference Include="Selenium.Support" Version="4.23.0" />
+		<PackageReference Include="Selenium.WebDriver" Version="4.23.0" />
+		<PackageReference Include="Selenium.WebDriver.MSEdgeDriver" Version="129.0.2786-pre" />
+		<PackageReference Include="SeleniumExtras.WaitHelpers" Version="1.0.2" />
+
+		<!-- Specific browser drivers -->
+		<PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="128.0.6613.8400" />
+		<PackageReference Include="Selenium.WebDriver.GeckoDriver" Version="0.35.0" />
+		
+
+		<!-- WebDriverManager for automatic driver management -->
+		<PackageReference Include="WebDriverManager" Version="2.17.4" />
+	</ItemGroup>
+
+	<!-- ItemGroup: Packages for handling Excel and CSV files -->
+	<ItemGroup>
+		<!-- Packages for Excel file manipulation -->
+		<PackageReference Include="EPPlus" Version="7.2.2" />
+		<PackageReference Include="NPOI" Version="2.7.1" />
+		<PackageReference Include="ExcelDataReader" Version="3.7.0" />
+		<PackageReference Include="ExcelDataReader.DataSet" Version="3.7.0" />
+
+		<!-- Package for handling CSV files -->
+		<PackageReference Include="CsvHelper" Version="33.0.1" />
+	</ItemGroup>
+
+	<!-- ItemGroup: Additional configurations -->
+	<ItemGroup>
+		<!-- Using directive for NUnit -->
+		<Using Include="NUnit.Framework" />
+	</ItemGroup>
+
+	<!-- ItemGroup: Directory structure configuration -->
+	<ItemGroup>
+		<!-- Include Base directory in the project -->
+		<Folder Include="Base\" />
+	</ItemGroup>
 
 </Project>

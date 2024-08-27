@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using SeleniumC_WebTesting.Pages;
 using SeleniumC_WebTesting.TestData;
 using SeleniumC_WebTesting.Utils;
@@ -12,7 +13,7 @@ namespace SeleniumC_WebTesting.Tests
         private HomePage homePage;
         private FamilyMemberInsurancePage familyMemberInsurancePage;
 
- // Use relative path to the TestData.xlsx file
+        // Use relative path to the TestData.xlsx file
         private static readonly string ExcelFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\TestData\TestData.xlsx");
         private static readonly string CSVFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\TestData\CSVTestData.csv");
 
@@ -27,7 +28,7 @@ namespace SeleniumC_WebTesting.Tests
 
         }
 
-        [Test,Order(3)]
+        [Test, Order(3)]
         [TestCase("Dheerendra", "9865832536", "dheerendra546@gmail.com")]
         [TestCase("Vikas", "9885832536", "vikas875@gmail.com")]
         [TestCase("Pranav", "9885232536", "pranav741@gmail.com")]
@@ -46,7 +47,7 @@ namespace SeleniumC_WebTesting.Tests
 
 
 
-        
+
         public static IEnumerable<object[]> TestData
         {
             get
@@ -84,14 +85,24 @@ namespace SeleniumC_WebTesting.Tests
         [Test, TestCaseSource(nameof(GetTestData)), Order(1)]
         public void TestEnterAllValidCredentialFromCSVFile(string fullName, string mobile, string email)
         {
-            // Ensure EnterAllFields returns FamilyMemberInsurancePage
-            aboutYourSelfPage.EnterAllFieldsAndClickGetStarted(fullName, mobile, email);
-            aboutYourSelfPage.ClickGetStarted();
+            try
+            {
+                // Ensure EnterAllFields returns FamilyMemberInsurancePage
+                aboutYourSelfPage.EnterAllFieldsAndClickGetStarted(fullName, mobile, email);
+                aboutYourSelfPage.ClickGetStarted();
 
-            familyMemberInsurancePage = aboutYourSelfPage.ClickGetStarted();
-            // Assert the presence of Trace Id
-            familyMemberInsurancePage.AssertTraceIdIsPresent();
+                familyMemberInsurancePage = aboutYourSelfPage.ClickGetStarted();
+                // Assert the presence of Trace Id
+                familyMemberInsurancePage.AssertTraceIdIsPresent();
+            }
+            catch (NoSuchElementException ex)
+            {
+                // Log the exception details
+                Console.WriteLine($"Element not found: {ex.Message}");
+                throw; // Re-throw the exception to fail the test
+            }
         }
+
     }
 
 }

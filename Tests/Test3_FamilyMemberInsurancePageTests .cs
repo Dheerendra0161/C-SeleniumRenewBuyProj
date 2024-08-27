@@ -28,6 +28,6 @@ namespace SeleniumC_WebTesting.Tests
             familyMemberInsurancePage.ClickContinue();
             // Add assertions to verify the selected age or the checkbox state
         }
-      
+
     }
 }

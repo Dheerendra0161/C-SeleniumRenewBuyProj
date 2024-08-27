@@ -1,9 +1,8 @@
-﻿using NUnit.Framework;
-using SeleniumC_WebTesting.Pages;
+﻿using SeleniumC_WebTesting.Pages;
 
 namespace SeleniumC_WebTesting.Tests
 {
-    [TestFixture,Order(1)]
+    [TestFixture, Order(1)]
     public class HomePageTests : Base
     {
         private HomePage homePage;
@@ -19,10 +18,9 @@ namespace SeleniumC_WebTesting.Tests
         [Test]
         public void TestClickHealthImage()
         {
-           
+
             homePage.ClickHealthImage();
-            
-            
+
         }
     }
 }

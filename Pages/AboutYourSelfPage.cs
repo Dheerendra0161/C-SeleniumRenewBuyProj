@@ -1,5 +1,6 @@
 ﻿using System;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using SeleniumC_WebTesting.Utils;  // Import the namespace where WaitHelpers is defined
 
 namespace SeleniumC_WebTesting.Pages
@@ -7,8 +8,8 @@ namespace SeleniumC_WebTesting.Pages
     public class AboutYourSelfPage
     {
         private readonly IWebDriver driver;
-
-       //  private By FullNameFieldLocator => By.Id("auto-fullName"); This is the By Locator
+        private readonly WebDriverWait wait;
+        //  private By FullNameFieldLocator => By.Id("auto-fullName"); This is the By Locator
         private IWebElement FullNameField => driver.FindElement(By.Id("auto-fullName"));
         private IWebElement MobileField => driver.FindElement(By.Id("auto-mobile"));
         private IWebElement EmailField => driver.FindElement(By.Id("auto-email"));
@@ -17,6 +18,7 @@ namespace SeleniumC_WebTesting.Pages
         public AboutYourSelfPage(IWebDriver driver)
         {
             this.driver = driver;
+            this.wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         }
 
         // Enter full name and return the current instance for chaining
@@ -30,7 +32,7 @@ namespace SeleniumC_WebTesting.Pages
         // Enter mobile and return the current instance for chaining
         public AboutYourSelfPage EnterMobile(string mobile)
         {
-            var element = WaitHelpers.WaitForElementToBeClickable(driver, MobileField, 10);
+            var element = WaitHelpers.WaitForElementToBeClickable(driver, MobileField, 20);
             element.SendKeys(mobile);
             return this;
         }
@@ -38,7 +40,7 @@ namespace SeleniumC_WebTesting.Pages
         // Enter email and return the current instance for chaining
         public AboutYourSelfPage EnterEmail(string email)
         {
-            var element = WaitHelpers.WaitForElementToBeClickable(driver, EmailField,10);
+            var element = WaitHelpers.WaitForElementToBeClickable(driver, EmailField,20);
             element.SendKeys(email);
             return this;
         }
@@ -46,7 +48,7 @@ namespace SeleniumC_WebTesting.Pages
         // Click the Get Started button and navigate to the next page
         public FamilyMemberInsurancePage ClickGetStarted()
         {
-            var element = WaitHelpers.WaitForElementToBeClickable(driver, GetStartedButton, 10);
+            var element = WaitHelpers.WaitForElementToBeClickable(driver, GetStartedButton, 20);
             element.Click();
             return new FamilyMemberInsurancePage(driver);
         }
